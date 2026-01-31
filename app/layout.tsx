@@ -27,7 +27,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="theme-color" content="#FF6B35" />
+        <meta name="theme-color" content="#1976d2" />
       </head>
       <body>
         <Providers>

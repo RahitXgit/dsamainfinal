@@ -77,7 +77,7 @@
   }
 }
 
-/* Base Styles */
+/* Base Styles with Gradient Background */
 body {
   background: var(--background);
   color: var(--foreground);
@@ -89,6 +89,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   /* Prevent horizontal scroll */
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Gradient Background with Floating Orbs */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 20%, rgba(25, 118, 210, 0.15), transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 30%, rgba(156, 39, 176, 0.12), transparent 50%),
+    radial-gradient(ellipse 50% 60% at 30% 80%, rgba(66, 165, 245, 0.1), transparent 50%),
+    radial-gradient(ellipse 40% 40% at 70% 70%, rgba(186, 104, 200, 0.08), transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Dark mode gradient */
+@media (prefers-color-scheme: dark) {
+  body::before {
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 20%, rgba(144, 202, 249, 0.08), transparent 50%),
+      radial-gradient(ellipse 60% 40% at 80% 30%, rgba(206, 147, 216, 0.06), transparent 50%),
+      radial-gradient(ellipse 50% 60% at 30% 80%, rgba(66, 165, 245, 0.05), transparent 50%),
+      radial-gradient(ellipse 40% 40% at 70% 70%, rgba(186, 104, 200, 0.04), transparent 50%);
+  }
 }
 
 /* Desktop font size */
@@ -175,10 +205,41 @@ h3 {
 }
 
 .glassmorphism {
-  background: var(--card);
-  border: none;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.03);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow:
+    0 8px 32px rgba(25, 118, 210, 0.08),
+    0 4px 16px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.glassmorphism:hover {
+  box-shadow:
+    0 12px 40px rgba(25, 118, 210, 0.12),
+    0 6px 20px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Dark mode glassmorphism */
+@media (prefers-color-scheme: dark) {
+  .glassmorphism {
+    background: rgba(30, 30, 30, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 8px 32px rgba(144, 202, 249, 0.06),
+      0 4px 16px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glassmorphism:hover {
+    box-shadow:
+      0 12px 40px rgba(144, 202, 249, 0.1),
+      0 6px 20px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
 }
 
 /* Button Styles - Gradient Minimalism */
